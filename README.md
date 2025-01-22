@@ -1,3 +1,5 @@
+<img src="./assets/flui_kit_logo.jpeg" alt="Logo" width="180" />
+
 # FLUI Kit
 
 A modern library of reusable components and screens for Flutter, designed to accelerate mobile application development with consistent design.
@@ -8,10 +10,11 @@ Add this dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flui_kit: ^1.0.0
+  flui_kit: ^0.0.1
 ```
 
 Then run:
+
 ```bash
 flutter pub get
 ```
@@ -27,26 +30,11 @@ flutter pub get
 
 ## 🛠️ Available Components
 
-### Core Components
-- Buttons (primary, secondary, outline, icon)
-- Text fields
-- Cards
-- Lists
-- Grids
+All components can be found at [FluiKit Components](https://fluikit.maeltoukap.me).
 
-### Navigation
-- Bottom Navigation Bar
-- Custom App Bars
-- Drawer
-- Tabs
+### Custom Components
 
-### Screens
-- Login/Signup
-- User Profile
-- Dashboard
-- Product List
-- Product Details
-- Settings
+- Card plan switcher
 
 ## 💡 Usage
 
@@ -106,9 +94,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 For any questions or suggestions, feel free to open an issue or contact us directly.
 
-- Email: support@flui-kit.dev
-- Twitter: [@flui_kit](https://twitter.com/flui_kit)
-- Website: https://flui-kit.dev
+- Email: <devmael09@gmail.com>
+- Twitter: [@flui_kit](https://x.com/maeltoukap)
+- Website: [https://fluikit.maeltoukap.me](https://fluikit.maeltoukap.me)
 
 ---
 

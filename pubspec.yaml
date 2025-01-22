@@ -1,7 +1,7 @@
 name: flui_kit
 description: "A flutter components and screens librairy."
 version: 0.0.1
-homepage:
+homepage: https://github.com/maeltoukap/flui_kit_package
 
 environment:
   sdk: ^3.5.3

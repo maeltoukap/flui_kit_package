@@ -1,51 +1,23 @@
+import 'package:flui_kit/librairy.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
-import 'package:flui_kit/flui_kit.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
+  final myTheme = PlanSwitcherTheme(
+    borderRadius: 24,
+    backgroundColor: Colors.grey[50]!,
+    buttonTextColor: Colors.white,
+  );
 
-class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
-  final _fluiKitPlugin = FluiKit();
-
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion =
-          await _fluiKitPlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
-  }
+  final myPlanTheme = PlanChoicesTheme(
+    popularBackgroundColor: Colors.red[50]!,
+    popularTextColor: const Color(0xFF900DA1)!,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +26,32 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        body: PlanSwitcher(
+          plans: [
+            PlanData(
+              name: 'Free',
+              monthlyPrice: 0.00,
+              yearlyPrice: 0.00,
+              popular: false,
+            ),
+            PlanData(
+              name: 'Starter',
+              monthlyPrice: 9.99,
+              yearlyPrice: 7.49,
+              popular: true,
+            ),
+            PlanData(
+              name: 'Pro',
+              monthlyPrice: 19.99,
+              yearlyPrice: 17.49,
+              popular: false,
+            ),
+          ],
+          theme: myTheme,
+          planTheme: myPlanTheme,
+          onPlanSelected: (index) => print('Selected plan: $index'),
+          period: '/month',
+          buttonTitle: 'Get Started',
         ),
       ),
     );

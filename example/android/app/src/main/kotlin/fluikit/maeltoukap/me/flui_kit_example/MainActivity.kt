@@ -1,4 +1,4 @@
-package fluikit.maeltoukap.me.flui_kit_example
+package fluikit.maeltoukap.me
 
 import io.flutter.embedding.android.FlutterActivity
 
