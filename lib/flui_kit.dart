@@ -1,7 +1,8 @@
-library flui_kit;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
+import 'flui_kit_platform_interface.dart';
+
+class FluiKit {
+  Future<String?> getPlatformVersion() {
+    return FluiKitPlatform.instance.getPlatformVersion();
+  }
 }
