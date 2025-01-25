@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/maeltoukap/flui_kit_package/blob/main/README.md
+    about: Check out our documentation to learn more.
+  - name: Support
+    url: devmael09@gmail.com
+    about: Contact us to discuss your questions and issues.
