@@ -1,4 +1,3 @@
-
 import 'flui_kit_platform_interface.dart';
 
 class FluiKit {
