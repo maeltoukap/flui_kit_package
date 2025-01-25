@@ -175,7 +175,6 @@ class _DatePickerState extends State<DatePicker> {
   /// Current visible month
   late DateTime _currentMonth;
 
-
   final DatePickerController controller = DatePickerController();
 
   /// Whether the picker is visible
@@ -275,10 +274,29 @@ class _DatePickerState extends State<DatePicker> {
     return true;
   }
 
+  List<String> _reorderWeekdayLabels(List<String> labels, int weekStartsOn) {
+    // No need to reorganize if starting with Monday (1) or Sunday (7/0)
+    if (weekStartsOn == DateTime.monday) return labels;
+
+    // Convert weekStartsOn from 1-7 format to 0-6
+    int start = weekStartsOn == 7 ? 0 : weekStartsOn - 1;
+
+    // Reorganize labels based on start day
+    List<String> reorderedLabels = [...labels];
+    for (int i = 0; i < labels.length; i++) {
+      int newIndex = (i + start) % 7;
+      reorderedLabels[i] = labels[newIndex];
+    }
+
+    return reorderedLabels;
+  }
+
   /// Builds the weekday labels grid
   Widget _buildWeekdayLabels() {
-    final labels = widget.weekdayLabels ??
-        ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+    final labels = _reorderWeekdayLabels(
+        widget.weekdayLabels ??
+            ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+        widget.weekStartsOn);
 
     return GridView.builder(
       shrinkWrap: true,
