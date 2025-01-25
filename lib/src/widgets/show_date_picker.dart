@@ -61,40 +61,48 @@ Future<void> showSingleDatePicker({
           key: ValueKey(initialDate),
           builder: (context, setStater) {
             return Dialog(
-              child: Container(
-                decoration: calendarDecoration,
-                child: Padding(
-                  padding: dialogPadding ?? const EdgeInsets.all(16.0),
-                  child: DatePicker.single(
-                    // controller: controller,
-                    closeOnSelection: closeOnSelection,
-                    dateFormatter: dateFormatter,
-                    allowDeselection: allowDeselection,
-                    header: header,
-                    footer: footer,
-                    calendarDecoration: calendarDecoration,
-                    showOutsideDays: showOutsideDays,
-                    initialMonth: initialMonth,
-                    monthYearFormatter: monthYearFormatter,
-                    weekdayLabels: weekdayLabels,
-                    showWeekNumbers: showWeekNumbers,
-                    weekStartsOn: weekStartsOn,
-                    numberOfMonths: numberOfMonths,
-                    minDate: minDate,
-                    maxDate: maxDate,
-                    selectableDayPredicate: selectableDayPredicate,
-                    hideNavigation: hideNavigation,
-                    theme: theme,
-                    selectedDate: initialDate,
-                    onChange: (date) {
-                      setStater(() {
-                        initialDate = date;
-                      });
-                      onChange(date!);
-                      if (closeOnSelection) {
-                        Navigator.of(context).pop(date);
-                      }
-                    },
+              child: ConstrainedBox(
+                // Add constraints
+                constraints: BoxConstraints(
+                  maxWidth: 800, // Max width of the dialog
+                  maxHeight: MediaQuery.of(context).size.height *
+                      0.9, // 90% of the screen height
+                ),
+                child: Container(
+                  decoration: calendarDecoration,
+                  child: Padding(
+                    padding: dialogPadding ?? const EdgeInsets.all(16.0),
+                    child: DatePicker.single(
+                      // controller: controller,
+                      closeOnSelection: closeOnSelection,
+                      dateFormatter: dateFormatter,
+                      allowDeselection: allowDeselection,
+                      header: header,
+                      footer: footer,
+                      calendarDecoration: calendarDecoration,
+                      showOutsideDays: showOutsideDays,
+                      initialMonth: initialMonth,
+                      monthYearFormatter: monthYearFormatter,
+                      weekdayLabels: weekdayLabels,
+                      showWeekNumbers: showWeekNumbers,
+                      weekStartsOn: weekStartsOn,
+                      numberOfMonths: numberOfMonths,
+                      minDate: minDate,
+                      maxDate: maxDate,
+                      selectableDayPredicate: selectableDayPredicate,
+                      hideNavigation: hideNavigation,
+                      theme: theme,
+                      selectedDate: initialDate,
+                      onChange: (date) {
+                        setStater(() {
+                          initialDate = date;
+                        });
+                        onChange(date!);
+                        if (closeOnSelection) {
+                          Navigator.of(context).pop(date);
+                        }
+                      },
+                    ),
                   ),
                 ),
               ),
@@ -162,40 +170,48 @@ Future<void> showRangeDatePicker({
           key: ValueKey(initialRange),
           builder: (context, setState) {
             return Dialog(
-              child: Container(
-                decoration: calendarDecoration,
-                child: Padding(
-                  padding: dialogPadding ?? const EdgeInsets.all(16.0),
-                  child: DatePicker.range(
-                    // controller: controller,
-                    closeOnSelection: closeOnSelection,
-                    dateFormatter: dateFormatter,
-                    allowDeselection: allowDeselection,
-                    header: header,
-                    footer: footer,
-                    calendarDecoration: calendarDecoration,
-                    showOutsideDays: showOutsideDays,
-                    initialMonth: initialMonth,
-                    monthYearFormatter: monthYearFormatter,
-                    weekdayLabels: weekdayLabels,
-                    showWeekNumbers: showWeekNumbers,
-                    weekStartsOn: weekStartsOn,
-                    numberOfMonths: numberOfMonths,
-                    minDate: minDate,
-                    maxDate: maxDate,
-                    selectableDayPredicate: selectableDayPredicate,
-                    hideNavigation: hideNavigation,
-                    theme: theme,
-                    selectedRange: initialRange,
-                    onRangeChange: (range) {
-                      setState(() {
-                        initialRange = range;
-                      });
-                      onRangeChange(range!);
-                      if (closeOnSelection) {
-                        Navigator.of(context).pop();
-                      }
-                    },
+              child: ConstrainedBox(
+                // Add constraints
+                constraints: BoxConstraints(
+                  maxWidth: 800, // Max width of the dialog
+                  maxHeight: MediaQuery.of(context).size.height *
+                      0.9, // 90% of the screen height
+                ),
+                child: Container(
+                  decoration: calendarDecoration,
+                  child: Padding(
+                    padding: dialogPadding ?? const EdgeInsets.all(16.0),
+                    child: DatePicker.range(
+                      // controller: controller,
+                      closeOnSelection: closeOnSelection,
+                      dateFormatter: dateFormatter,
+                      allowDeselection: allowDeselection,
+                      header: header,
+                      footer: footer,
+                      calendarDecoration: calendarDecoration,
+                      showOutsideDays: showOutsideDays,
+                      initialMonth: initialMonth,
+                      monthYearFormatter: monthYearFormatter,
+                      weekdayLabels: weekdayLabels,
+                      showWeekNumbers: showWeekNumbers,
+                      weekStartsOn: weekStartsOn,
+                      numberOfMonths: numberOfMonths,
+                      minDate: minDate,
+                      maxDate: maxDate,
+                      selectableDayPredicate: selectableDayPredicate,
+                      hideNavigation: hideNavigation,
+                      theme: theme,
+                      selectedRange: initialRange,
+                      onRangeChange: (range) {
+                        setState(() {
+                          initialRange = range;
+                        });
+                        onRangeChange(range!);
+                        if (closeOnSelection) {
+                          Navigator.of(context).pop();
+                        }
+                      },
+                    ),
                   ),
                 ),
               ),
