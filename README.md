@@ -81,21 +81,22 @@ Check out the `example` folder for complete implementations and use cases.
 Contributions are welcome! Please read our contribution guidelines for more details.
 
 1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create your feature branch (`git checkout -b feat/AmazingFeature`)
+3. Create your fix branch (`git checkout -b fix/AmazingFeature`)
+4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+5. Push to the branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under a custom MIT License. See `LICENSE` for more information.
 
 ## 📧 Contact
 
 For any questions or suggestions, feel free to open an issue or contact us directly.
 
 - Email: <devmael09@gmail.com>
-- Twitter: [@flui_kit](https://x.com/maeltoukap)
+<!-- - Twitter: [@flui_kit](https://x.com/maeltoukap) -->
 - Website: [https://fluikit.maeltoukap.me](https://fluikit.maeltoukap.me)
 
 ---
