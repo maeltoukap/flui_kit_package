@@ -116,12 +116,13 @@ class _DatePickerExampleState extends State<DatePickerExample> {
                     'Sun',
                   ],
                   showWeekNumbers: true,
-                  weekStartsOn: DateTime.wednesday,
+                  weekStartsOn: DateTime.monday,
                   numberOfMonths: 2,
                   minDate: DateTime(2023),
                   maxDate: DateTime(2026),
+                  maxSelectableRange: 7,
                   selectableDayPredicate: (date) =>
-                      date.weekday != DateTime.wednesday,
+                      date.weekday != DateTime.sunday,
                   hideNavigation: false,
                   theme: const DatePickerThemeCustom(),
                   onRangeChange: (range) {
@@ -144,9 +145,7 @@ class _DatePickerExampleState extends State<DatePickerExample> {
                 child: const Text("Click me to open date picker"),
               ),
             ),
-
             const SizedBox(height: 32),
-
             // Display selected values
             Text(
               'Selected Date: ${_selectedDate?.toString() ?? "None"}',

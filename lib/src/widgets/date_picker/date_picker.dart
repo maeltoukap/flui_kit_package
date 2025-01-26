@@ -16,6 +16,7 @@ class DatePicker extends StatefulWidget {
     required this.type,
     // this.controller,
     this.selectedDate,
+    this.maxSelectableRange,
     this.selectedRange,
     this.onChange,
     this.onRangeChange,
@@ -65,6 +66,7 @@ class DatePicker extends StatefulWidget {
     required this.onChange,
   })  : type = DatePickerType.single,
         selectedRange = null,
+        maxSelectableRange = null,
         onRangeChange = null;
 
   /// Constructor for date range selection mode
@@ -90,6 +92,7 @@ class DatePicker extends StatefulWidget {
     this.hideNavigation = false,
     this.theme,
     this.selectedRange,
+    this.maxSelectableRange,
     required this.onRangeChange,
   })  : type = DatePickerType.range,
         selectedDate = null,
@@ -106,6 +109,9 @@ class DatePicker extends StatefulWidget {
 
   /// Currently selected date range (for range mode)
   final DateRange? selectedRange;
+
+  /// Maximum selectable range in days
+  final int? maxSelectableRange;
 
   /// Callback when a date is selected in single mode
   final ValueChanged<DateTime?>? onChange;
@@ -220,11 +226,20 @@ class _DatePickerState extends State<DatePicker> {
       // Selected date is before start date, make it new start
       newRange = DateRange(start: date);
     } else {
-      // Complete the range
-      newRange = DateRange(
-        start: currentRange.start,
-        end: date,
-      );
+      // Check if the selected range is within maxSelectableRange
+      final daysDifference = date.difference(currentRange.start).inDays;
+
+      if (widget.maxSelectableRange != null &&
+          daysDifference >= widget.maxSelectableRange!) {
+        // If exceeds max range, create new range starting from selected date
+        newRange = DateRange(start: date);
+      } else {
+        // Complete the range
+        newRange = DateRange(
+          start: currentRange.start,
+          end: date,
+        );
+      }
     }
 
     widget.onRangeChange?.call(newRange);

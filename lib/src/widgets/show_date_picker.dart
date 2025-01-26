@@ -136,6 +136,7 @@ Future<void> showSingleDatePicker({
 /// [hideNavigation] If true, hides navigation buttons.
 /// [theme] Custom theme for the calendar.
 /// [onRangeChange] Callback called when a range is selected.
+/// [maxSelectableRange] Maximum selectable range in days.
 /// [dialogPadding] Custom padding for the dialog.
 
 Future<void> showRangeDatePicker({
@@ -161,6 +162,7 @@ Future<void> showRangeDatePicker({
   bool hideNavigation = false,
   DatePickerThemeCustom? theme,
   required ValueChanged<DateRange> onRangeChange,
+  int? maxSelectableRange,
   EdgeInsets? dialogPadding,
 }) {
   return showDialog<void>(
@@ -202,6 +204,7 @@ Future<void> showRangeDatePicker({
                       hideNavigation: hideNavigation,
                       theme: theme,
                       selectedRange: initialRange,
+                      maxSelectableRange: maxSelectableRange,
                       onRangeChange: (range) {
                         setState(() {
                           initialRange = range;
