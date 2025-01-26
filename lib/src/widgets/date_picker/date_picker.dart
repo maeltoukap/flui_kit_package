@@ -17,6 +17,7 @@ class DatePicker extends StatefulWidget {
     // this.controller,
     this.selectedDate,
     this.maxSelectableRange,
+    this.joinSelectedDays = false,
     this.selectedRange,
     this.onChange,
     this.onRangeChange,
@@ -67,6 +68,7 @@ class DatePicker extends StatefulWidget {
   })  : type = DatePickerType.single,
         selectedRange = null,
         maxSelectableRange = null,
+        joinSelectedDays = false,
         onRangeChange = null;
 
   /// Constructor for date range selection mode
@@ -93,6 +95,7 @@ class DatePicker extends StatefulWidget {
     this.theme,
     this.selectedRange,
     this.maxSelectableRange,
+    this.joinSelectedDays = null,
     required this.onRangeChange,
   })  : type = DatePickerType.range,
         selectedDate = null,
@@ -169,6 +172,9 @@ class DatePicker extends StatefulWidget {
 
   /// Whether to hide the navigation arrows
   final bool hideNavigation;
+
+  /// Whether to join selected days
+  final bool? joinSelectedDays;
 
   /// Theme configuration for the date picker
   final DatePickerThemeCustom? theme;
@@ -386,10 +392,10 @@ class _DatePickerState extends State<DatePicker> {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 7,
         mainAxisSpacing: 2,
-        crossAxisSpacing: 2,
+        crossAxisSpacing: widget.joinSelectedDays == true ? 0 : 2,
       ),
       itemCount: _getDaysInMonth(_currentMonth) + _getFirstDayOffset(),
       itemBuilder: (context, index) {
@@ -416,6 +422,7 @@ class _DatePickerState extends State<DatePicker> {
                   : _handleRangeSelected(date)
               : null,
           theme: widget.theme,
+          joinSelectedDays: widget.joinSelectedDays ?? false,
           dateFormatter: widget.dateFormatter,
         );
       },
@@ -497,6 +504,7 @@ class _DayCell extends StatelessWidget {
     required this.isInRange,
     required this.isRangeStart,
     required this.isRangeEnd,
+    required this.joinSelectedDays,
     required this.onTap,
     this.theme,
     this.dateFormatter,
@@ -508,6 +516,7 @@ class _DayCell extends StatelessWidget {
   final bool isInRange;
   final bool isRangeStart;
   final bool isRangeEnd;
+  final bool joinSelectedDays;
   final VoidCallback? onTap;
   final DatePickerThemeCustom? theme;
   final String Function(DateTime)? dateFormatter;
@@ -523,7 +532,7 @@ class _DayCell extends StatelessWidget {
         decoration: BoxDecoration(
           color: _getBackgroundColor(isToday),
           borderRadius: BorderRadius.circular(
-            theme?.daySize ?? 25,
+            joinSelectedDays ? 2 : theme?.daySize ?? 25,
           ),
         ),
         child: Text(

@@ -163,6 +163,7 @@ Future<void> showRangeDatePicker({
   DatePickerThemeCustom? theme,
   required ValueChanged<DateRange> onRangeChange,
   int? maxSelectableRange,
+  bool? joinSelectedDays,
   EdgeInsets? dialogPadding,
 }) {
   return showDialog<void>(
@@ -205,6 +206,7 @@ Future<void> showRangeDatePicker({
                       theme: theme,
                       selectedRange: initialRange,
                       maxSelectableRange: maxSelectableRange,
+                      joinSelectedDays: joinSelectedDays,
                       onRangeChange: (range) {
                         setState(() {
                           initialRange = range;

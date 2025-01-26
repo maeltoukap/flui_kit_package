@@ -121,6 +121,7 @@ class _DatePickerExampleState extends State<DatePickerExample> {
                   minDate: DateTime(2023),
                   maxDate: DateTime(2026),
                   maxSelectableRange: 7,
+                  joinSelectedDays: true,
                   selectableDayPredicate: (date) =>
                       date.weekday != DateTime.sunday,
                   hideNavigation: false,
