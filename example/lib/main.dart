@@ -8,50 +8,54 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  final myTheme = PlanSwitcherTheme(
-    borderRadius: 24,
-    backgroundColor: Colors.grey[50]!,
-    buttonTextColor: Colors.white,
-  );
-
-  final myPlanTheme = PlanChoicesTheme(
-    popularBackgroundColor: Colors.red[50]!,
-    popularTextColor: const Color(0xFF900DA1)!,
-  );
+  final List<Tag> TAGS = [
+    Tag(id: "flutter_bloc", label: "Flutter Bloc"),
+    Tag(id: "provider", label: "Provider"),
+    Tag(id: "go_router", label: "Go Router"),
+    Tag(id: "git_flow", label: "Git Flow"),
+    Tag(id: "firebase_auth", label: "Firebase Auth"),
+    Tag(id: "firebase_crashlytics", label: "Crashlytics"),
+    Tag(id: "firestore", label: "Firestore"),
+    Tag(id: "flutter_hooks", label: "Flutter Hooks"),
+    Tag(id: "firebase_analytics", label: "Firebase Analytics"),
+    Tag(id: "git_cherry_pick", label: "Git Cherry Pick"),
+    Tag(id: "freezed", label: "Freezed"),
+    Tag(id: "git_rebase", label: "Git Rebase"),
+    Tag(id: "remote_config", label: "Remote Config"),
+    Tag(id: "git_stash", label: "Git Stash"),
+    Tag(id: "flame", label: "Flame Engine"),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: PlanSwitcher(
-          plans: [
-            PlanData(
-              name: 'Free',
-              monthlyPrice: 0.00,
-              yearlyPrice: 0.00,
-              popular: false,
-            ),
-            PlanData(
-              name: 'Starter',
-              monthlyPrice: 9.99,
-              yearlyPrice: 7.49,
-              popular: true,
-            ),
-            PlanData(
-              name: 'Pro',
-              monthlyPrice: 19.99,
-              yearlyPrice: 17.49,
-              popular: false,
-            ),
-          ],
-          theme: myTheme,
-          planTheme: myPlanTheme,
-          onPlanSelected: (index) => print('Selected plan: $index'),
-          period: '/month',
-          buttonTitle: 'Get Started',
+        body: TagSelector(
+          tags: TAGS,
+          initialSelectedTags: [],
+          title: 'TAGS',
+          titleStyle: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+          ),
+          theme: TagSelectorTheme(
+            backgroundColor: Colors.white,
+            selectedTagBackground: Colors.blue[50]!,
+            availableTagBackground: Colors.grey[100]!,
+            borderColor: Colors.blue[200]!,
+            iconColor: Colors.blue[400]!,
+            borderRadius: 8.0,
+            padding: const EdgeInsets.all(16),
+            animationDuration: const Duration(milliseconds: 400),
+          ),
+          maxWidth: 600,
+          selectedTagsHeight: 50,
+          maxSelectedTags: 2,
+          onMaxSelectedTagsReached: () {},
+          onSelectionChanged: (selectedTags) {
+            print(
+                'Selected tags: ${selectedTags.map((t) => t.label).join(', ')}');
+          },
         ),
       ),
     );
