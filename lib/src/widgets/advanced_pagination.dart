@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'infinite_scroll/controllers/pagination_controller.dart';
+import 'advanced_pagination/controllers/pagination_controller.dart';
 
 /// Defines the type of pagination to be used in the widget
 enum PaginationType {
