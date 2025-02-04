@@ -1,6 +1,13 @@
+// Plan Switcher
 export 'src/widgets/plan_switcher.dart';
+
+// Accordion
 export 'src/widgets/accordion.dart';
+
+// Date Picker
 export 'src/widgets/date_picker/date_picker_exports.dart';
+
+// Tag Selector
 export 'src/widgets/tag_selector.dart';
 
 // Advanced Pagination
