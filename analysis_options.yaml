@@ -1,4 +1,8 @@
 include: package:flutter_lints/flutter.yaml
+analyzer:
+  errors:
+    library_private_types_in_public_api: ignore
+    use_super_parameters: ignore
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
