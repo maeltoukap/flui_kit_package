@@ -1,5 +1,4 @@
 import 'package:flui_kit/flui_kit.dart';
-import 'package:flui_kit_example/components/single_date_picker.dart';
 import 'package:flutter/material.dart';
 
 class DatePickerExample extends StatefulWidget {
