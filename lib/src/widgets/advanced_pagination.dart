@@ -7,7 +7,10 @@ enum PaginationType {
   infiniteScroll,
 
   /// Adds pagination navigation buttons for moving between pages
-  buttons
+  buttons,
+
+  /// Adds pagination button for loading more data
+  loadMore
 }
 
 // /// Defines how data should be processed when new items are loaded
@@ -23,6 +26,7 @@ enum PaginationType {
 class PaginationButtonsConfig {
   final Widget? previousPageButton; // Widget for the 'Previous Page' button
   final Widget? nextPageButton; // Widget for the 'Next Page' button
+  final Widget? loadMorePageButton; // Widget for the 'Load More' button
   final Widget Function(int current, int total)?
       pageIndicator; // Displays current and total pages
   final EdgeInsets? buttonsPadding; // Padding around the buttons row
@@ -30,6 +34,7 @@ class PaginationButtonsConfig {
   const PaginationButtonsConfig({
     this.previousPageButton,
     this.nextPageButton,
+    this.loadMorePageButton,
     this.pageIndicator,
     this.buttonsPadding,
   });
@@ -219,6 +224,26 @@ class _AdvancedPaginationState extends State<AdvancedPagination> {
     );
   }
 
+  /// Builds load moore button pagination UI
+  Widget _buildLoadMoreButtonPagination() {
+    final config = widget.buttonsConfig;
+
+    return Padding(
+      padding: config?.buttonsPadding ?? const EdgeInsets.all(8.0),
+      child: GestureDetector(
+        onTap: () => _handleLoadMore(true),
+        child: config?.loadMorePageButton ??
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(8)),
+              child: Center(child: Text('Load More')),
+            ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // Check if the list is empty and an empty state widget is provided
@@ -242,6 +267,8 @@ class _AdvancedPaginationState extends State<AdvancedPagination> {
         ),
         if (widget.paginationType == PaginationType.buttons)
           _buildButtonPagination(), // Render buttons for navigation
+        if (widget.paginationType == PaginationType.loadMore)
+          _buildLoadMoreButtonPagination(), // Render load more button for navigation
       ],
     );
   }

@@ -64,7 +64,7 @@ class _AdvancedPaginationExampleState extends State<AdvancedPaginationExample> {
               itemCount: _allImages.length, // Total count of items
               itemsPerPage: _itemsPerPage,
               onLoadMore: _loadImages,
-              paginationType: PaginationType.infiniteScroll,
+              paginationType: PaginationType.loadMore,
               buttonsConfig: PaginationButtonsConfig(
                 previousPageButton: const Text('Previous'),
                 nextPageButton: const Text('Next'),
