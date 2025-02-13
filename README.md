@@ -1,4 +1,4 @@
-<img src="./assets/flui_kit_logo.jpeg" alt="Logo" width="180" />
+<img src="https://raw.githubusercontent.com/maeltoukap/flui_kit_package/refs/heads/main/assets/flui_kit_logo.jpeg" alt="FLUI Kit Logo" width="200">
 
 # FLUI Kit
 
@@ -10,7 +10,7 @@ Add this dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flui_kit: ^0.0.1
+  flui_kit: ^0.0.2
 ```
 
 Then run:
@@ -30,7 +30,7 @@ flutter pub get
 
 ## 🛠️ Available Components
 
-All components can be found at [FluiKit Components](https://fluikit.maeltoukap.me).
+All components can be found at [FluiKit Components](https://fluikit.maeltoukap.me/components/).
 
 ### Custom Components
 

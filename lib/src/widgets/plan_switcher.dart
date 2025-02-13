@@ -217,7 +217,7 @@ class ButtonPlan extends StatelessWidget {
 }
 
 /// Configuration class for the period toggle button's appearance.
-class ToggleTheme {
+class PeriodTheme {
   final Color backgroundColor;
   final Color activeColor;
   final Color shadowColor;
@@ -226,7 +226,7 @@ class ToggleTheme {
   final double borderRadius;
   final EdgeInsets padding;
 
-  const ToggleTheme({
+  const PeriodTheme({
     this.backgroundColor = const Color(0xFFF1F5F9),
     this.activeColor = Colors.white,
     this.shadowColor = Colors.black12,
@@ -245,7 +245,7 @@ class ButtonToggle extends StatelessWidget {
   final int period;
   final Function(int) onChangePeriod;
   final List<String> labels;
-  final ToggleTheme theme;
+  final PeriodTheme theme;
   final Duration animationDuration;
 
   /// Creates a period toggle button.
@@ -260,7 +260,7 @@ class ButtonToggle extends StatelessWidget {
     required this.period,
     required this.onChangePeriod,
     this.labels = const ['Monthly', 'Yearly'],
-    this.theme = const ToggleTheme(),
+    this.theme = const PeriodTheme(),
     this.animationDuration = const Duration(milliseconds: 300),
   }) : super(key: key);
 
@@ -503,7 +503,7 @@ class PlanSwitcher extends StatefulWidget {
   final void Function(PlanData plan)? onPressed;
   final PlanSwitcherTheme theme;
   final PlanChoicesTheme planTheme;
-  final ToggleTheme toggleTheme;
+  final PeriodTheme periodTheme;
   final Widget? footer;
   final String buttonTitle;
   final String? popularLabel;
@@ -511,12 +511,14 @@ class PlanSwitcher extends StatefulWidget {
   /// Creates a plan switcher widget.
   ///
   /// - [plans]: List of plan data to display.
+  /// - [buttonTitle]: Title to display on the submit button.
   /// - [period]:Period to display (monthly/yearly).
   /// - [onPlanSelected]: Callback when a plan is selected.
   /// - [onPeriodChanged]: Callback when period changes (monthly/yearly).
+  /// - [onPressed]: Callback when plan is submitted.
   /// - [theme]: Custom theme for the main container.
   /// - [planTheme]: Custom theme for plan buttons.
-  /// - [toggleTheme]: Custom theme for the period toggle.
+  /// - [periodTheme]: Custom theme for the period toggle.
   /// - [footer]: Optional widget to display at the bottom.
   /// - [buttonTitle]: Title to display on the submit button.
   /// - [popularLabel]: Custom text for the popular badge (defaults to "Popular").
@@ -531,7 +533,7 @@ class PlanSwitcher extends StatefulWidget {
     this.onPressed,
     this.theme = const PlanSwitcherTheme(),
     this.planTheme = const PlanChoicesTheme(),
-    this.toggleTheme = const ToggleTheme(),
+    this.periodTheme = const PeriodTheme(),
     this.footer,
   }) : super(key: key);
 
