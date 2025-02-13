@@ -1,6 +1,6 @@
 name: flui_kit
 description: "A Flutter library offering modern high customizable components and screens for seamless app development."
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/maeltoukap/flui_kit_package
 
 environment:
