@@ -30,7 +30,7 @@ flutter pub get
 
 ## 🛠️ Available Components
 
-All components can be found at [FluiKit Components](https://fluikit.maeltoukap.me).
+All components can be found at [FluiKit Components](https://fluikit.maeltoukap.me/components/).
 
 ### Custom Components
 

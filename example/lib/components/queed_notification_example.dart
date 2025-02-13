@@ -9,29 +9,27 @@ class QueedNotificationExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Stack(
-          children: [
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  _notificationManager.show(
-                    QueedNotification(
-                      message: "Bottom Right Notification",
-                      type: NotificationType.success,
-                    ),
-                  );
-                },
-                child: const Text('Bottom Right Notification'),
-              ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                _notificationManager.show(
+                  QueedNotification(
+                    message: "Bottom Right Notification",
+                    type: NotificationType.success,
+                  ),
+                );
+              },
+              child: const Text('Bottom Right Notification'),
             ),
-            QueedNotificationWidget(
-              notificationStream: _notificationManager.notificationStream,
-              position: NotificationPosition.bottom,
-            ),
-          ],
-        ),
+          ),
+          QueedNotificationWidget(
+            notificationStream: _notificationManager.notificationStream,
+            position: NotificationPosition.bottom,
+          ),
+        ],
       ),
     );
   }

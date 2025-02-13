@@ -3,25 +3,33 @@ import 'dart:collection';
 import 'package:flui_kit/src/widgets/queed_notification/queed_notification_exports.dart';
 import 'package:flutter/material.dart';
 
+/// A singleton class that manages the display of notifications throughout the app.
 class NotificationManager {
+  // Singleton instance
   static final NotificationManager _instance = NotificationManager._internal();
   factory NotificationManager() => _instance;
   NotificationManager._internal();
 
+  /// Stream controller for broadcasting notifications
   final _notificationController =
       StreamController<QueedNotification>.broadcast();
+
+  /// Public stream that can be listened to for notification updates
   Stream<QueedNotification> get notificationStream =>
       _notificationController.stream;
 
+  /// Shows a notification by adding it to the stream
   void show(QueedNotification notification) {
     _notificationController.add(notification);
   }
 
+  /// Closes the stream controller
   void dispose() {
     _notificationController.close();
   }
 }
 
+/// Widget that displays notifications in a queue with animations
 class QueedNotificationWidget extends StatefulWidget {
   final Stream<QueedNotification> notificationStream;
   final NotificationPosition position;
@@ -36,6 +44,7 @@ class QueedNotificationWidget extends StatefulWidget {
   QueedNotificationWidgetState createState() => QueedNotificationWidgetState();
 }
 
+/// State class for QueedNotificationWidget that handles the notification queue and animations
 class QueedNotificationWidgetState extends State<QueedNotificationWidget>
     with SingleTickerProviderStateMixin {
   final Queue<QueedNotification> _notificationQueue = Queue();
@@ -251,6 +260,7 @@ class QueedNotificationWidgetState extends State<QueedNotificationWidget>
   void dispose() {
     _streamSubscription?.cancel();
     _animationController.dispose();
+    _timer?.cancel();
     super.dispose();
   }
 }
