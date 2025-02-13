@@ -1,4 +1,4 @@
-<img src="./assets/flui_kit_logo.jpeg" alt="Logo" width="180" />
+<img src="https://raw.githubusercontent.com/maeltoukap/flui_kit_package/refs/heads/main/assets/flui_kit_logo.jpeg" alt="FLUI Kit Logo" width="200">
 
 # FLUI Kit
 
