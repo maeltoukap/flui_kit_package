@@ -237,8 +237,6 @@ class QueedNotificationWidgetState extends State<QueedNotificationWidget>
         // case NotificationPosition.bottomLeft:
         // case NotificationPosition.bottomRight:
         return 16;
-      default:
-        return null;
     }
   }
 
@@ -251,8 +249,6 @@ class QueedNotificationWidgetState extends State<QueedNotificationWidget>
         // case NotificationPosition.bottomLeft:
         // case NotificationPosition.bottomRight:
         return 16;
-      default:
-        return null;
     }
   }
 
