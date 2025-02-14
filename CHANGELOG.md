@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.2+1 - 2025-02-13
+
+- Remove dart analysis issues for better referencement.
+
 ## 0.0.2 - 2025-02-13
 
 - Added `QueuedNotification` for managing a queue of notifications.

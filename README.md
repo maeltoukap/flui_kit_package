@@ -10,7 +10,7 @@ Add this dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flui_kit: ^0.0.2
+  flui_kit: ^0.0.2+1
 ```
 
 Then run:
