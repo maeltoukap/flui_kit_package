@@ -21,4 +21,3 @@
 - Improved customization with dedicated themes (`PlanSwitcherTheme`, `PlanChoicesTheme`).
 - Fixed bugs related to optional widget lists and method callbacks.
 - Tested with Flutter 3.13.0+ and Dart 3.0.0+.
-
