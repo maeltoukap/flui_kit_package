@@ -10,6 +10,9 @@ class QueedNotificationExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Queed Notification Example'),
+      ),
       body: Stack(
         children: [
           Center(
