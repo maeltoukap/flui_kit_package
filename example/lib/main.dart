@@ -1,3 +1,4 @@
+import 'package:flui_kit_example/src/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 import 'components/accordion_example.dart';
@@ -15,8 +16,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: AccordionExample(),
+    return const MaterialApp(
+      home: HomePage(),
     );
   }
 }
