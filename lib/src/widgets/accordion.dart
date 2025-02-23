@@ -8,8 +8,8 @@ class Accordion<T> extends StatefulWidget {
   /// The initial value of the accordion
   final T? initialValue;
 
-  /////// / The type of accordion (single or multiple)
- /////// // final AccordionType type;
+  /// The type of accordion (single or multiple)
+  final AccordionType type;
 
   /// Whether to maintain the state of the accordion
   final bool maintainState;
@@ -18,10 +18,11 @@ class Accordion<T> extends StatefulWidget {
   final AccordionTheme theme;
 
   /// Constructor for the Accordion widget
-  Accordion({
+  const Accordion({
+    super.key,
     required this.children,
     this.initialValue,
-    // this.type = AccordionType.single,
+    this.type = AccordionType.single,
     this.maintainState = false,
     required this.theme,
   });
@@ -44,19 +45,19 @@ class _AccordionState<T> extends State<Accordion<T>> {
 
   void _toggle(T value) {
     setState(() {
-      // if (widget.type == AccordionType.single) {
-      //   if (_values.contains(value)) {
-      //     _values = [];
-      //   } else {
-      //     _values = [value];
-      //   }
-      // } else {
-      if (_values.contains(value)) {
-        _values.remove(value);
+      if (widget.type == AccordionType.single) {
+        if (_values.contains(value)) {
+          _values = [];
+        } else {
+          _values = [value];
+        }
       } else {
-        _values.add(value);
+        if (_values.contains(value)) {
+          _values.remove(value);
+        } else {
+          _values.add(value);
+        }
       }
-      // }
     });
   }
 
@@ -82,6 +83,7 @@ class _AccordionState<T> extends State<Accordion<T>> {
             values: _values,
             toggle: _toggle,
             theme: widget.theme,
+            isExpanded: _values.contains(child.value),
           );
         }).toList(),
       ),
@@ -101,7 +103,7 @@ class AccordionItem<T> {
   final String child;
 
   /// Constructor for the AccordionItem class
-  AccordionItem({
+  const AccordionItem({
     required this.value,
     required this.title,
     required this.child,
@@ -122,12 +124,16 @@ class _AccordionItem<T> extends StatefulWidget {
   /// The theme of the accordion item
   final AccordionTheme theme;
 
+  /// Whether the item is expanded
+  final bool isExpanded;
+
   /// Constructor for the _AccordionItem widget
-  _AccordionItem({
+  const _AccordionItem({
     required this.child,
     required this.values,
     required this.toggle,
     required this.theme,
+    required this.isExpanded,
   });
 
   @override
@@ -151,6 +157,27 @@ class _AccordionItemState<T> extends State<_AccordionItem<T>>
       begin: 0.0,
       end: 1.0,
     ).animate(_animationController);
+
+    // Initialize expanded state
+    _expanded = widget.isExpanded;
+    if (_expanded) {
+      _animationController.value = 1.0;
+    }
+  }
+
+  @override
+  void didUpdateWidget(_AccordionItem<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isExpanded != widget.isExpanded) {
+      setState(() {
+        _expanded = widget.isExpanded;
+      });
+      if (_expanded) {
+        _animationController.forward();
+      } else {
+        _animationController.reverse();
+      }
+    }
   }
 
   @override
@@ -196,7 +223,7 @@ class _AccordionItemState<T> extends State<_AccordionItem<T>>
                 RotationTransition(
                   turns: _animation,
                   child: Icon(
-                    Icons.arrow_drop_down,
+                    _expanded ? Icons.arrow_drop_up : Icons.arrow_drop_down,
                     color: widget.theme.arrowColor,
                   ),
                 ),
@@ -226,10 +253,10 @@ class _AccordionItemState<T> extends State<_AccordionItem<T>>
 }
 
 /// An enum for the type of accordion
-// enum AccordionType {
-//   single,
-//   multiple,
-// }
+enum AccordionType {
+  single,
+  multiple,
+}
 
 /// A theme for customizing the appearance of the accordion.
 class AccordionTheme {
