@@ -99,6 +99,10 @@ For any questions or suggestions, feel free to open an issue or contact us direc
 <!-- - Twitter: [@flui_kit](https://x.com/maeltoukap) -->
 - Website: [https://fluikit.maeltoukap.me](https://fluikit.maeltoukap.me)
 
+## Contributors
+
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
 ---
 
 Made with ❤️ by your team
