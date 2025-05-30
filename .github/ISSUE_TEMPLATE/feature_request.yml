@@ -2,7 +2,7 @@ name: "Task"
 description: "Create a structured task for development or maintenance."
 title: "[TASK] "
 labels: ["task"]
-assignees: ['maeltoukap']
+assignees: []
 
 body:
   - type: markdown
