@@ -1,0 +1,89 @@
+name: "Bug Report"
+description: "Report a bug to help us improve."
+title: "[BUG] "
+labels: ["bug"]
+assignees: ['maeltoukap']
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for providing as much information as possible to help us reproduce and fix the bug.
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Provide a concise summary of the issue encountered.
+      placeholder: "Example: The app crashes when opening a specific file."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Explain the steps needed to reproduce the issue.
+      placeholder: |
+        1. Step 1
+        2. Step 2
+        3. Step 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: Current Behavior
+      description: Describe what is currently happening.
+      placeholder: "Example: The app closes without any error message."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: Describe what should happen instead.
+      placeholder: "Example: The file should open without errors."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: List the criteria that need to be met to consider the issue resolved.
+      placeholder: |
+        - The file opens correctly.
+        - No error messages appear.
+        - The app remains stable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and/or Screenshots
+      description: Include all relevant logs and/or screenshots.
+      placeholder: "Paste logs or upload screenshots here."
+    validations:
+      required: false
+
+  - type: textarea
+    id: possible_solutions
+    attributes:
+      label: Possible Solutions
+      description: If possible, identify the line of code or section that might be causing the issue.
+      placeholder: "Example: The 'openFile()' function in 'utils/file_utils.dart'."
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_references
+    attributes:
+      label: Additional References
+      description: Add references that might help the developer resolve the issue.
+      placeholder: "Links, reports, documents, etc."
+    validations:
+      required: false

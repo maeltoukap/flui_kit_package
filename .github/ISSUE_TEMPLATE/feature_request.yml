@@ -1,0 +1,62 @@
+name: "Task"
+description: "Create a structured task for development or maintenance."
+title: "[TASK] "
+labels: ["task"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out the details below to help us properly plan and complete this task.
+
+  - type: textarea
+    id: task_summary
+    attributes:
+      label: Task Summary
+      description: Provide a concise summary of the task.
+      placeholder: "Example: Implement authentication middleware."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: Expected Result
+      description: Clearly describe the expected result of the task.
+      placeholder: "Example: Users should be redirected to the login page if they are not authenticated."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_solution
+    attributes:
+      label: Steps to Reach the Solution
+      description: (Optional) List the steps that might lead to the solution.
+      placeholder: |
+        1. Step 1
+        2. Step 2
+        3. Step 3
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: List the criteria that must be met for the task to be considered complete.
+      placeholder: |
+        - Middleware checks if user is authenticated.
+        - Unauthenticated users are redirected.
+        - Authenticated users proceed to the requested page.
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Additional References
+      description: (Optional) Add links, documents, or anything that helps complete the task.
+      placeholder: "Example: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401"
+    validations:
+      required: false
