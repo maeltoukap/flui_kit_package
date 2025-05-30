@@ -130,6 +130,7 @@ For any questions or suggestions, feel free to open an issue or contact us direc
 	<tbody>
 </table>
 <!-- readme: collaborators,contributors -end -->
+
 ---
 
 Made with ❤️ by your team
